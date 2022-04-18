@@ -7,6 +7,7 @@ public class Bubblesort {
 		this.vetor = vetor;
 	}
 	
+	
 	boolean troca = true;
     int aux;
     while (troca) {

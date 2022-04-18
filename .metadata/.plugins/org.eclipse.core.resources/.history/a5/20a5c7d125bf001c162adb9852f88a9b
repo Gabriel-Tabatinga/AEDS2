@@ -1,12 +1,5 @@
 
 public class Bubblesort {
-	
-	private String vetor[];
-	
-	Bubblesort(String vetor[]){
-		this.vetor = vetor;
-	}
-	
 	boolean troca = true;
     int aux;
     while (troca) {

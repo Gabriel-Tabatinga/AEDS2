@@ -1,0 +1,129 @@
+Regras Básicas: 
+ 
+1. Estude bastante cada par de entrada/saída fornecido. 
+2. Todos  os  programas  deverão  ser  desenvolvidos  na  linguagem  de  programação 
+Java. 
+3. Essas  práticas  poderão  ser  desenvolvidas  em  grupos  de,  no  máximo,  três 
+integrantes. 
+4. Cópias, se existirem, serão encaminhadas ao colegiado de coordenação didática 
+do curso. 
+5. Fique  atento  ao  charset  dos  arquivos  de  entrada  e  saída.  Recomenda-se  a 
+utilização dos métodos da classe MyIO.java para leitura  de  dados  do  teclado. 
+É necessário definir o charset a ser utilizado antes de começar a leitura de dados 
+do teclado, da seguinte forma: MyIO.setCharset(“UTF-8”). 
+6. As  saídas  esperadas,  cadastradas  no  VERDE  pela  professora,  foram  geradas 
+empregando-se: System.out.println(). 
+7. Para  cada  exercício,  vocês  devem  submeter  apenas  um  arquivo  (.java).  Essa 
+regra será necessária para a submissão de exercícios no VERDE e no 
+identificador de plágios utilizado na disciplina. 
+8. A resolução (código) de cada exercício deverá ser submetida ao VERDE. 
+9. A  execução  do  código  submetido  será  realizada  automaticamente  pelo  VERDE, 
+mas o código será analisado e validado pela professora. 
+ 
+Base de Dados: 
+ 
+Você foi contratado para 
+trabalhar  em  uma  empresa  que 
+distribui stream de séries de 
+televisão  na  Web.  Sua  tarefa  é 
+organizar as informações das 
+séries  disponíveis  para  exibição 
+ao  usuário.  Os  dados  que  serão 
+exibidos  foram  obtidos  por  meio 
+de  consultas  à  base  de  dados 
+Wikipedia. 
+ 
+ 
+Assim, você precisará ler, 
+organizar  e  armazenar  os  dados 
+de cada série em memória, 
+utilizando estruturas de dados 
+adequadas. 
+Exercícios: 
+ 
+1. Bolha 
+ 
+Utilizando vetores, ordene registros de séries de televisão aplicando o algoritmo 
+de  ordenação  Bubblesort,  considerando  que  a  chave  de  pesquisa  seja  o 
+atributo  duração.  Em  caso  de  empate,  o  segundo  critério  de  ordenação  deve 
+ser o atributo nome da série. 
+Utilize a classe Serie especificada e desenvolvida em prática anterior. 
+Seu  programa  deve  ler  um  arquivo-texto  chamado  data.txt  que,  no  VERDE, 
+localiza-se  na  pasta  /tmp.  Você  deve  preencher  um  vetor  de  objetos  da 
+classe  Serie  com  os  dados  das  diversas  séries  de  televisão  informadas  nesse 
+arquivo.  A  primeira  linha  desse  arquivo  deve  ser  descartada,  pois  apenas 
+informa os diversos campos presentes em cada uma das linhas seguintes. Cada 
+uma das linhas seguintes indica os dados de uma série, separados por um ponto 
+e vírgula (‘;’). 
+Seu  programa  também  deve  ler  a  entrada  padrão  que  apresenta,  em  sua 
+primeira linha, a quantidade de séries que devem ser ordenadas. 
+Em  seguida,  são  informadas,  ainda  na  entrada  padrão,  várias  linhas  sendo  que 
+cada uma contém o nome  da  série cujos dados devem ser inseridos no vetor 
+de séries de televisão a ser ordenado. 
+A  saída  padrão  corresponde  aos  registros  ordenados,  um  por  linha.  Em  cada 
+linha  da  saída,  escreva  os  dados  do  registro  correspondente  obedecendo  o 
+seguinte formato: 
+ 
+nome  ##  formato  ##  duração  ##  país  de  origem  ##  idioma  de  origem  ## 
+emissora  de  televisão  original  ##  data  de  início  da  transmissão  original  ## 
+número de temporadas ## número de episódios 
+ 
+Além  disso,  crie  um  arquivo  de  log  na  pasta  corrente  com  o  nome  sua 
+matrícula_bolha.txt com uma única linha contendo: seu número de matrícula, 
+tempo de execução de seu algoritmo de ordenação (em milissegundos), número 
+de  comparações  realizadas  entre  os  elementos  do  vetor  de  séries  e  número  de 
+movimentações  realizadas  entre  os  elementos  do  vetor.  Todas  as  informações 
+desse arquivo de log devem ser separadas por uma tabulação ‘\t’. 
+ 
+
+2. Ordenação por inserção 
+ 
+Repita  a  questão  de  ordenação  de  séries  de  televisão  por  meio  do  método  
+Bubblesort,  contudo,  aplicando  o  algoritmo  de  ordenação por inserção, 
+considerando  como  chave  de  pesquisa  o  atributo  que  indica  a  emissora  de 
+televisão  original.  Em caso de empate, o segundo critério de ordenação deve 
+ser o atributo nome da série. 
+ 
+O nome do arquivo de log dessa questão será sua matrícula_insercao.txt. 
+ 
+
+3. Ordenação por seleção 
+ 
+Repita  a  questão  de  ordenação  de  séries  de  televisão  por  meio  do  método  
+Bubblesort, contudo, aplicando o algoritmo de ordenação por seleção, 
+considerando que a chave de pesquisa seja o atributo país  de  origem. Em caso 
+de empate, o segundo critério de ordenação deve ser o atributo nome da série. 
+ 
+O nome do arquivo de log dessa questão será sua matrícula_selecao.txt. 
+ 
+
+4. Heapsort 
+ 
+Repita  a  questão  de  ordenação  de  séries  de  televisão  por  meio  do  método  
+Bubblesort, contudo, aplicando o algoritmo de ordenação Heapsort, 
+considerando que a chave de pesquisa seja o atributo número de 
+temporadas. Em caso de empate, o segundo critério de ordenação deve ser o 
+atributo nome da série. 
+ 
+O nome do arquivo de log dessa questão será sua matrícula_heapsort.txt. 
+ 
+
+5. Mergesort  
+ 
+Repita  a  questão  de  ordenação  de  séries  de  televisão  por  meio  do  método  
+Bubblesort, contudo, aplicando o algoritmo de ordenação Mergesort, 
+considerando que a chave de pesquisa seja o atributo idioma  original. Em caso 
+de empate, o segundo critério de ordenação deve ser o atributo nome da série. 
+ 
+O nome do arquivo de log dessa questão será sua matrícula_mergesort.txt. 
+ 
+
+6. Quicksort 
+ 
+Repita  a  questão  de  ordenação  de  séries  de  televisão  por  meio  do  método  
+Bubblesort, contudo, aplicando o algoritmo de ordenação Quicksort, 
+considerando  que  a  chave  de pesquisa  seja  o  atributo número  de  episódios. 
+Em caso de empate, o segundo critério de ordenação deve ser o atributo nome 
+da série. 
+ 
+O nome do arquivo de log dessa questão será sua matrícula_quicksort.txt. 
