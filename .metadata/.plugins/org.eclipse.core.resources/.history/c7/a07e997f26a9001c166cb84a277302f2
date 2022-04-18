@@ -1,0 +1,17 @@
+
+public class Aplicacao {
+
+	public static int contarMaisculas(String entrada) {
+		int cont = 0;
+		for (int i = 0; i < entrada.length(); i++) {
+			if ((entrada.charAt(i) >= 'A') && (entrada.charAt(i) <= 'Z')) {
+				cont++;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}
