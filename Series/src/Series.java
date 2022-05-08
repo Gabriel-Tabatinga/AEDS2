@@ -128,4 +128,22 @@ public class Series {
 	}
 	
 	
+	public Serie clone(){
+        Serie resp = new Serie();
+        resp.name = this.name;
+        resp.format = this.format;
+        resp.duration = this.duration;
+        resp.country = this.country;
+        resp.language = this.language;
+        resp.broadcaster = this.broadcaster;
+        resp.streaming = this.dateBeggin;
+        resp.seasons = this.numberSeasons;
+        resp.episodes = this.numberEpisodes;
+        return resp;
+    }
+    public void printClass(int K){
+        System.out.println("[" + k + "] " + this.name + " ## " + this.format + " ## " + this.duration + " ## " + this.country + " ## " + this.language + " ## " + this.broadcaster + " ## " +
+        this.dateBeggin + " ## " + this.numberSeasons + " ## " + this.numberEpisodes);
+    }
+	
 }
