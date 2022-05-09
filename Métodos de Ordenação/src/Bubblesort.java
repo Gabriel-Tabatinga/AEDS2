@@ -1,23 +1,23 @@
 
 public class Bubblesort {
 	
-	private String vetor[];
+	private Series vetor[];
+	private int n;
 	
-	Bubblesort(String vetor[]){
+	Bubblesort(Series vetor[], int n){
 		this.vetor = vetor;
+		this.n = n;
 	}
 	
-	boolean troca = true;
-    int aux;
-    while (troca) {
-        troca = false;
-        for (int i = 0; i < vetor.length - 1; i++) {
-            if (vetor[i] > vetor[i + 1]) {
-                aux = vetor[i];
-                vetor[i] = vetor[i + 1];
-                vetor[i + 1] = aux;
-                troca = true;
-            }
-        }
-    }
+	public void sort() {
+		for (int i = (n - 1); i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (vetor[j] > vetor[j + 1]) {
+						int temp = vetor[j];
+						vetor[j] = vetor[j+1];
+	      				vetor[j+1] = temp;
+				}
+			}
+		}
+	}
 }

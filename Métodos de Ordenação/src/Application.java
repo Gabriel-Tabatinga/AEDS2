@@ -4,6 +4,13 @@ public class Application {
 		String input;
 		Series serie;
 		Fila fila = new Fila(40);
+		Bubblesort bolha;
+		Heapsort heap;
+		Insertion insert;
+		Mergesort merge;
+		Quicksort quick;
+		Selection select;
+		
 		
 		ArquivoTextoLeitura bancoDeDados;
 		bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
@@ -41,7 +48,8 @@ public class Application {
 		
 		String entrada;
 		entrada = MyIO.readLine();
-		
+		bolha = new Bubblesort(, Integer.parseInt(entrada));
+		bolha.sort;
 		
 		
 
