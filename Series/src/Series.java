@@ -127,5 +127,10 @@ public class Series {
 		System.out.print(numberEpisodes);
 	}
 	
+
+    public void printClass(int k){
+        System.out.println("[" + k + "] " + this.name + " ## " + this.format + " ## " + this.duration + " ## " + this.country + " ## " + this.language + " ## " + this.broadcaster + " ## " +
+        this.dateBeggin + " ## " + this.numberSeasons + " ## " + this.numberEpisodes);
+    }
 	
 }
