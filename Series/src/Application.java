@@ -1,26 +1,18 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.text.ParseException;
-
 public class Application{
 
 	public static void main(String[] args) throws Exception{
 		String input;
+		String entrada;
 		Series serie;
 		Pilha pilha = new Pilha(70);
+		Pilha pilhaSaida = new Pilha(70);
 		
-		FileReader fileReader = new FileReader("/tmp/data.txt");
+		ArquivoTextoLeitura bancoDeDados;
+		bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
+		input = bancoDeDados.ler();
+		input = bancoDeDados.ler();
 		
-		BufferedReader buffReader = new BufferedReader(fileReader);
-		try {
-			input = buffReader.readLine();
-		}catch (Exception erro) {;}
-		
-		
-		
-		input = buffReader.readLine();
-		while((!input.equals("D")) && (!input.equals("E"))) {
+		while(input != null) {
 			
 			String[] r = input.split (";");
 			serie = new Series();
@@ -42,33 +34,35 @@ public class Application{
 				serie.setNumberSeasons(Integer.parseInt(r[7]));
 			if(r[8] != null)
 				serie.setNumberEpisodes(Integer.parseInt(r[8]));
-			pilha.empilha(serie);
-			input = buffReader.readLine();
+			//lista.inserir(serie);
+			input = bancoDeDados.ler();
+		}
+		bancoDeDados.fecharArquivo();
+		
+		entrada = MyIO.readLine();
+		while(!entrada.equals("FIM")) {
+			
 		}
 		
-		int tam = Integer.parseInt(input);
+		
+		entrada = MyIO.readLine();
+		int tam = Integer.parseInt(entrada);
 
 		Series desemp;
 
 		for(int i=0;i<=tam;i++) {
-			if(input == "D") {
+			if(entrada == "D") {
 				desemp = pilha.desempilha();
 				System.out.println("(D) "+ desemp.getName());
 			}else if(input == "E") {
 				serie = new Series();
-				try{
-					pilha.empilha(serie);
-				}catch (Exception erro) {;}
+				pilha.empilha(serie);
 			}
-			try{
-				input = buffReader.readLine();
-			}catch (Exception erro) {;}
+			entrada = MyIO.readLine();
 		}
-		pilha.imprimir();
-		try{
-			buffReader.close();
-		}catch (Exception erro) {;}
-
+		pilhaSaida.imprimir();
+		
+		
 	}
 	
 }
