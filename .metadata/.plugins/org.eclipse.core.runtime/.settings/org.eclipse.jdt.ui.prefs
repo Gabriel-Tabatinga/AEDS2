@@ -2,7 +2,10 @@ content_assist_number_of_computers=12
 eclipse.preferences.version=1
 org.eclipse.jdt.ui.formatterprofiles.version=21
 spelling_locale_initialized=true
+<<<<<<< HEAD
 typefilter_migrated=true
+=======
+>>>>>>> 850341e4c0ed3f8b9bf1019ad761724e2910719c
 typefilter_migrated_2=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

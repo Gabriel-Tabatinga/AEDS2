@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 <<<<<<< Updated upstream:bemFormada/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
 =======
 	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="2"/>
@@ -7,6 +8,8 @@
 	<item key="org.eclipse.jdt.ui.last.selected.create.moduleinfo" value="false"/>
 	<item key="filters_last_used" value="filter_imports;"/>
 >>>>>>> Stashed changes:.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+=======
+>>>>>>> 850341e4c0ed3f8b9bf1019ad761724e2910719c
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>

@@ -1,8 +1,11 @@
 eclipse.preferences.version=1
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 org.eclipse.debug.ui.save_dirty_editors_before_launch=always
 pref_state_memento.org.eclipse.debug.ui.DebugVieworg.eclipse.debug.ui.DebugView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<DebugViewMemento org.eclipse.debug.ui.BREADCRUMB_DROPDOWN_AUTO_EXPAND\="false"/>
 >>>>>>> Stashed changes
+=======
+>>>>>>> 850341e4c0ed3f8b9bf1019ad761724e2910719c
 preferredTargets=default\:default|
