@@ -24,7 +24,6 @@ public class ArquivoTextoLeitura {
 		}
 	}
 	
-	@SuppressWarnings("finally")
 	public String ler() {
 		
 		String textoEntrada = null;
