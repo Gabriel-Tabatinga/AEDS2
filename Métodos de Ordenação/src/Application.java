@@ -4,13 +4,16 @@ public class Application {
 		String input;
 		Series serie;
 		Fila fila = new Fila(40);
+		
 		Bubblesort bolha;
-		Heapsort heap;
+		/*Heapsort heap;
 		Insertion insert;
 		Mergesort merge;
 		Quicksort quick;
-		Selection select;
-		
+		Selection select;*/
+		long startTime = System.nanoTime();
+        int comparacoes = 0, movimentacoes = 0	;
+        
 		
 		ArquivoTextoLeitura bancoDeDados;
 		bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
@@ -46,13 +49,39 @@ public class Application {
 		}
 		bancoDeDados.fecharArquivo();
 		
+		String primeiraLinha;
+		primeiraLinha = MyIO.readLine();
 		String entrada;
+		Fila sort = new Fila(Integer.parseInt(primeiraLinha));
+		Series aux;
+		
 		entrada = MyIO.readLine();
-		bolha = new Bubblesort(, Integer.parseInt(entrada));
-		bolha.sort;
-		
-		
+		for(int i=0;i<=Integer.parseInt(primeiraLinha);i++) {
+			aux  = fila.searchSerie(entrada);
+			
+			sort.enfileirar(aux);
+			
+			entrada = MyIO.readLine();
+		}
 
+		bolha = new Bubblesort(sort.getFila(), Integer.parseInt(primeiraLinha));
+		bolha.sort();
+		
+		
+		long endTime = System.nanoTime();
+		long duration = (endTime-startTime);
+		bolha.imprimir();
+		
+		ArquivoTextoEscrita saidaBolha;
+
+		saidaBolha = new ArquivoTextoEscrita("729636_bolha.txt");
+
+		int comp = bolha.getComparar();
+		int mov = bolha.getMovimentar();
+
+		saidaBolha.escrever("729636" + "\t" + duration + "\t" + comp + "\t" + mov);
+        saidaBolha.fecharArquivo();
+        
 	}
 
 }

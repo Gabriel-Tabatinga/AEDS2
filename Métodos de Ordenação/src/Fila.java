@@ -37,7 +37,7 @@ public class Fila {
 		return resp;
 	}
 	
-	public void enfileirar(Series novo) throws Exception{
+	public void enfileirar(Series novo){
 		
 		int posicao;
 		
@@ -45,8 +45,7 @@ public class Fila {
 			posicao = tras % tamanho;
 			fila[posicao] = novo;
 			tras++;
-		} else
-			throw new Exception("Não foi possível enfileirar o novo elemento: a fila está cheia!");
+		} 
 	}
 	
 	public Series desenfileirar() throws Exception{
@@ -75,6 +74,22 @@ public class Fila {
 			}
 		} else
 			throw new Exception ("Não foi possível mostrar o conteúdo da fila: a fila está vazia!");
+	}
+	
+	public Series searchSerie(String name) {
+		Series saida = new Series();
+		
+		for(int i = 0; i < tamanho-1; i++){
+			if(fila[i].getName() == name) {
+				saida = fila[i];
+				return saida;
+			}
+        }
+		return saida;
+	}
+	
+	public Series[] getFila() {
+		return this.fila;
 	}
 }
 

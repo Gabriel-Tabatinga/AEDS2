@@ -1,7 +1,7 @@
 
 public class Selection {
 
-	private Series vetor[];
+	private Series[] vetor;
 	private int n;
 	
 	Selection(Series vetor[], int n){

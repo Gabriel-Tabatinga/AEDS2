@@ -1,7 +1,7 @@
 
 public class Quicksort {
 
-	private Series vetor[];
+	private Series[] vetor;
 	private int esq;
 	private int dir;
 	

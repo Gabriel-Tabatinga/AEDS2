@@ -1,7 +1,7 @@
 
 public class Insertion {
 	
-	private Series vetor[];
+	private Series[] vetor;
 	private int n;
 	
 	Insertion(Series vetor[], int n){

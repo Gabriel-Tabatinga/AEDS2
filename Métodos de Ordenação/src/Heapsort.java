@@ -1,7 +1,7 @@
 
 public class Heapsort {
 	
-	private Series vetor[];
+	private Series[] vetor;
 	private int n;
 	private int tamHeap;
 	

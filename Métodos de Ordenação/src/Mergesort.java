@@ -1,7 +1,7 @@
 
 public class Mergesort {
 
-	private Series vetor[];
+	private Series[] vetor;
 	private int esq;
 	private int dir;
 	
