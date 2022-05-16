@@ -2,7 +2,7 @@
 public class Series {
 	
 	private String name, format, duration, country, language, broadcaster, dateBeggin;
-	private int numberSeasons, numberEpisodes;
+	private int numberSeasons, numberEpisodes, numberDuration;
 	
 	
 	public Series(String name, String format, String duration, String country, String language, String broadcaster, String dateBeggin, int numberSeasons, int numberEpisodes) {
@@ -132,5 +132,30 @@ public class Series {
         System.out.println(this.name + " ## " + this.format + " ## " + this.duration + " ## " + this.country + " ## " + this.language + " ## " + this.broadcaster + " ## " +
         this.dateBeggin + " ## " + this.numberSeasons + " ## " + this.numberEpisodes);
     }
+	public int getNumberDuration() {
+		
+		return numberDuration;
+	}
+	public void setNumberDuration() {
+		if(duration.contains(" "))
+		{
+			String[] r = duration.split (" ");
+			int i=0;
+			int j=0;
+			while(!(r[i].charAt(j) >= '0' && r[i].charAt(j) <= '9')) {
+				if(j+1 != null) {
+					
+				}
+			}
+			if(r[0].contains("-")) {
+				String[] l = r[0].split ("–");
+				this.numberDuration = Integer.parseInt(l[0]);
+			}else {
+				this.numberDuration = Integer.parseInt(r[0]);
+			}
+		}else {
+			this.numberDuration = Integer.parseInt(duration);
+		}
+	}
 	
 }

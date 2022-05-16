@@ -11,7 +11,7 @@ public class Application {
 		
 		ArquivoTextoLeitura bancoDeDados = null;
 		try {
-			bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
+			bancoDeDados = new ArquivoTextoLeitura("data.txt");
 		} catch (Exception e) {;}
 		input = bancoDeDados.ler();
 		input = bancoDeDados.ler();
@@ -38,6 +38,7 @@ public class Application {
 				serie.setNumberSeasons(Integer.parseInt(r[7]));
 			if(r[8] != null)
 				serie.setNumberEpisodes(Integer.parseInt(r[8]));
+			serie.setNumberDuration();
 			fila[u] = serie;
 			u++;
 			input = bancoDeDados.ler();
@@ -48,36 +49,39 @@ public class Application {
 		primeiraLinha = MyIO.readLine();
 		String entrada;
 		int n = Integer.parseInt(primeiraLinha);
-		Series[] sort = new Series[n+1];
+		Series[] sort = new Series[n];
 		
+		//System.out.println(n);
 		
-		entrada = MyIO.readLine();
 		for(int i=0; i<=n-1;i++) {
 			sort[i] = new Series();
-			sort[i].setName(entrada);
-			
 			entrada = MyIO.readLine();
+			//System.out.println(entrada);
+			for(int j =0;j<u;j++) {
+		    	if(entrada.equals(fila[j].getName()))
+		    		{
+		    			sort[i] = fila[j];
+		    			j=u;
+		    		}
+		    }
 		}
-		Quicksort quick = new Quicksort(sort, n);
-		quick.sort();
+		/*
+		for(int i=0;i<n;i++) {
+			sort[i].printClass();
+			System.out.println(i);
+		}*/
 
-	    Series[] print = new Series[n];
-	    int j=0;
-	    for(int i =0;j<999;i++) {
-	    	if(quick.vetor[j].getName() == fila[i].getName())
-	    		{
-	    			print[j] = new Series();
-		    		print[j] = fila[i];
-		    		j++;
-	    		}
-	    }
+		
+		Bubblesort bubble = new Bubblesort(sort, n);
+		bubble.sort();
+	    
 		  
 		
 		long endTime = System.nanoTime();
 		long duration = (endTime-startTime);
 		
-		for(int i=0;i<n-1;i++) {
-			print[i].printClass();
+		for(int i=0;i<n;i++) {
+			sort[i].printClass();
 		}
 		
 		ArquivoTextoEscrita saidaBolha;
@@ -85,9 +89,8 @@ public class Application {
 		saidaBolha = new ArquivoTextoEscrita("729636_bolha.txt");
 
 
-		saidaBolha.escrever("729636" + "\t" + duration + "\t" + quick.comparacoes + "\t" + quick.movimentacoes);
+		saidaBolha.escrever("729636" + "\t" + duration + "\t" + bubble.comparacoes + "\t" + bubble.movimentacoes);
         saidaBolha.fecharArquivo();
-        
 	}
 
 }

@@ -33,10 +33,16 @@ public class Quicksort {
 		Series pivot = vetor[fim];
 		int part = inicio - 1;
 		for (int i = inicio; i < fim; i++) {
-			if (vetor[i].getName().compareTo(pivot.getName()) < 0) {
+			if (vetor[i].getNumberEpisodes() < pivot.getNumberEpisodes()) {
 				part++;
 				swap(vetor, part, i);
 				comparacoes++;
+			}else if(vetor[i].getNumberEpisodes() == pivot.getNumberEpisodes()) {
+				if (vetor[i].getName().compareTo(pivot.getName())< 0) {
+					part++;
+					swap(vetor, part, i);
+					comparacoes++;
+				}
 			}
 		}
 		part++;
@@ -51,5 +57,6 @@ public class Quicksort {
 		vetor[j] = temp;
 		movimentacoes++;
 	}
+	
 
 }
