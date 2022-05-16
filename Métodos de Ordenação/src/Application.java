@@ -3,20 +3,16 @@ public class Application {
 	public static void main(String[] args) {
 		String input;
 		Series serie;
-		Fila fila = new Fila(40);
+		Series[] fila = new Series[99];
 		
-		Bubblesort bolha;
-		/*Heapsort heap;
-		Insertion insert;
-		Mergesort merge;
-		Quicksort quick;
-		Selection select;*/
+		
 		long startTime = System.nanoTime();
-        int comparacoes = 0, movimentacoes = 0	;
-        
+        int u = 0;
 		
-		ArquivoTextoLeitura bancoDeDados;
-		bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
+		ArquivoTextoLeitura bancoDeDados = null;
+		try {
+			bancoDeDados = new ArquivoTextoLeitura("/tmp/data.txt");
+		} catch (Exception e) {;}
 		input = bancoDeDados.ler();
 		input = bancoDeDados.ler();
 		
@@ -42,44 +38,54 @@ public class Application {
 				serie.setNumberSeasons(Integer.parseInt(r[7]));
 			if(r[8] != null)
 				serie.setNumberEpisodes(Integer.parseInt(r[8]));
-			try {
-				fila.enfileirar(serie);
-			} catch (Exception e) {;}
+			fila[u] = serie;
+			u++;
 			input = bancoDeDados.ler();
 		}
 		bancoDeDados.fecharArquivo();
-		
+		MyIO.setCharset("UTF-8");
 		String primeiraLinha;
 		primeiraLinha = MyIO.readLine();
 		String entrada;
-		Fila sort = new Fila(Integer.parseInt(primeiraLinha));
-		Series aux;
+		int n = Integer.parseInt(primeiraLinha);
+		Series[] sort = new Series[n+1];
+		
 		
 		entrada = MyIO.readLine();
-		for(int i=0;i<=Integer.parseInt(primeiraLinha);i++) {
-			aux  = fila.searchSerie(entrada);
-			
-			sort.enfileirar(aux);
+		for(int i=0; i<=n-1;i++) {
+			sort[i] = new Series();
+			sort[i].setName(entrada);
 			
 			entrada = MyIO.readLine();
 		}
+		Quicksort quick = new Quicksort(sort, n);
+		quick.sort();
 
-		bolha = new Bubblesort(sort.getFila(), Integer.parseInt(primeiraLinha));
-		bolha.sort();
-		
+	    Series[] print = new Series[n];
+	    int j=0;
+	    for(int i =0;j<999;i++) {
+	    	if(quick.vetor[j].getName() == fila[i].getName())
+	    		{
+	    			print[j] = new Series();
+		    		print[j] = fila[i];
+		    		j++;
+	    		}
+	    }
+		  
 		
 		long endTime = System.nanoTime();
 		long duration = (endTime-startTime);
-		bolha.imprimir();
+		
+		for(int i=0;i<n-1;i++) {
+			print[i].printClass();
+		}
 		
 		ArquivoTextoEscrita saidaBolha;
 
 		saidaBolha = new ArquivoTextoEscrita("729636_bolha.txt");
 
-		int comp = bolha.getComparar();
-		int mov = bolha.getMovimentar();
 
-		saidaBolha.escrever("729636" + "\t" + duration + "\t" + comp + "\t" + mov);
+		saidaBolha.escrever("729636" + "\t" + duration + "\t" + quick.comparacoes + "\t" + quick.movimentacoes);
         saidaBolha.fecharArquivo();
         
 	}

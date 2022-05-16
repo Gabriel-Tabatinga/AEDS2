@@ -7,7 +7,7 @@ public class Bubblesort {
 	private int comparacoes;
 	private int movimentacoes;
 	
-	Bubblesort(Series[] vetor, int n){
+	Bubblesort(Series vetor[], int n){
 		this.vetor = vetor;
 		this.n = n;
 		this.tamanho = n;
@@ -16,29 +16,17 @@ public class Bubblesort {
 	}
 	
 	public void sort() {
-		boolean houveTroca = true;
-        for(int rep = 0; rep < n - 1 && houveTroca; rep++){
-	        houveTroca = false;
-	        for (int b = 0; b < n -(rep+1); b++)
-
-                if (vetor[b].getNumberSeasons() > vetor[b+1].getNumberSeasons()){
-                    Series aux = vetor[b];
-                    vetor[b] = vetor[b + 1];
-                    vetor[b + 1] = aux;
-                    movimentacoes++;
-			        houveTroca = true;
-		        }
-
-                else if(vetor[b].getNumberSeasons() == vetor[b+1].getNumberSeasons()){
-                    if((vetor[b].getName()).compareTo(vetor[b + 1].getName())> 0){
-                        Series aux = vetor[b];
-                        vetor[b] = vetor[b + 1];
-                        vetor[b + 1] = aux;
-                        movimentacoes++;
-                    }
-                }
-                comparacoes++;;
-        }
+		for(int i = 0; i < n - 1; i++) {
+			for(int j = 0; j < n - 1 - i; j++) {
+		    	  if(vetor[j].getName().compareTo(vetor[j + 1].getName()) > 0) {
+		    		  Series aux = vetor[j];
+		    		  vetor[j] = vetor[j + 1];
+		    		  vetor[j + 1] = aux;
+		    		  movimentacoes++;
+		    	  }
+		    	  comparacoes++;
+			}
+		}
 	}
 	
 	public int getComparar() {

@@ -1,9 +1,10 @@
 
 public class Heapsort {
 	
-	private Series[] vetor;
+	public Series[] vetor;
 	private int n;
-	private int tamHeap;
+	public int movimentacoes = 0;
+	public int comparacoes = 0;
 	
 	Heapsort(Series vetor[], int n){
 		this.vetor = vetor;
@@ -12,18 +13,19 @@ public class Heapsort {
 	
 	
 	public void sort() {
-	      	Series[] tmp = new int[n + 1];
+	      	Series[] tmp = new Series[n + 1];
 	      	for(int i = 0; i < n; i++) {
 	        	tmp[i+1] = vetor[i];
+	        	
 	      	}
 	      	vetor = tmp;
 
-	      	//Contrução do heap
+	      	//Contrucao do heap
 	      	for(int tamHeap = 2; tamHeap <= n; tamHeap++) {
 	        	constroi(vetor, tamHeap);
 	      	}
 
-	      	//Ordenação propriamente dita
+	      	//Ordenacao propriamente dita
 	      	int tamHeap = n;
 	      	while(tamHeap > 1) {
 	        	troca(vetor, 1, tamHeap--);
@@ -35,13 +37,15 @@ public class Heapsort {
 	      	vetor = new Series[n];
 	      	for(int i = 0; i < n; i++) {
 	        	vetor[i] = tmp[i+1];
+	        	
 	      	}
 	}
 
 	void constroi(Series[] vetor, int tamHeap) {
 
-		for(int i = tamHeap; i > 1 && vetor[i] > vetor[i/2]; i /= 2) {
+		for(int i = tamHeap; i > 1 && vetor[i].getName().compareTo(vetor[i/2].getName()) > 0; i /= 2) {
 	        	troca(vetor, i, i/2);
+	        	comparacoes++;
 	      	}
 	}
 
@@ -51,8 +55,9 @@ public class Heapsort {
 	      	
 		while(i <= (tamHeap/2)) {
 	        	int filho = getMaiorFilho(vetor, i, tamHeap);
-	        	if(vetor[i] < vetor[filho]) {
+	        	if(vetor[i].getName().compareTo(vetor[filho].getName()) < 0 ) {
 	            		troca(vetor, i, filho);
+	            		comparacoes++;
 	            		i = filho;
 	         	} else {
 	            		i = tamHeap;
@@ -64,19 +69,22 @@ public class Heapsort {
 
 		int filho;
 
-		if (2*i == tamHeap || vetor[2*i] > vetor[2*i+1]) {
+		if (2*i == tamHeap || vetor[2*i].getName().compareTo(vetor[2*i+1].getName()) > 0 ) {
 	        	filho = 2*i;
+	        	comparacoes++;
 	      	} else {
 	        	filho = 2*i + 1;
+	        	comparacoes++;
 	      	}
 	      	return filho;
 	}
 
 	void troca(Series[] vetor, int i, int j) {
 		      
-		int temp = vetor[i];
+		Series temp = vetor[i];
 		vetor[i] = vetor[j];
 		vetor[j] = temp;
+		movimentacoes++;
 	}
 
 }

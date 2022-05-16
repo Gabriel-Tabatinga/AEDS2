@@ -1,8 +1,10 @@
 
 public class Insertion {
 	
-	private Series[] vetor;
+	public Series[] vetor;
 	private int n;
+	public int movimentacoes = 0;
+	public int comparacoes = 0;
 	
 	Insertion(Series vetor[], int n){
 		this.vetor = vetor;
@@ -12,10 +14,10 @@ public class Insertion {
 	
 	public void sort() {
 		for (int i = 1; i < n; i++) {
-			int tmp = vetor[i];
+			Series tmp = vetor[i];
 	         	int j = i - 1;
 
-	         	while ((j >= 0) && (vetor[j] > tmp)) {
+	         	while ((j >= 0) && (vetor[j].getName().compareTo(tmp.getName()) > 0)) {
 	            		vetor[j + 1] = vetor[j];
 	            		j--;
 	         	}

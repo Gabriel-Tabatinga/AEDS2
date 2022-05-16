@@ -1,9 +1,11 @@
 
 public class Quicksort {
 
-	private Series[] vetor;
+	public Series[] vetor;
 	private int esq;
 	private int dir;
+	public int movimentacoes = 0;
+	public int comparacoes = 0;
 	
 	
 	Quicksort(Series vetor[], int n){
@@ -12,14 +14,11 @@ public class Quicksort {
 		this.dir = n-1;
 	}
 	
-
-
-	/**
-	* Algoritmo de ordenação Quicksort.
-	* @param int esq: início da partição a ser ordenada
-	* @param int dir: fim da partição a ser ordenada
-	*/
-	public void quicksort() {
+	public void sort(){
+		quicksort(vetor, esq, dir);
+	}
+	
+	private void quicksort(Series[] vetor, int esq, int dir) {
 				
 		int part;
 		if (esq < dir){
@@ -29,14 +28,15 @@ public class Quicksort {
 		}
 	}
 					
-	private int particao(int[] vetor, int inicio, int fim) {
+	private int particao(Series[] vetor, int inicio, int fim) {
 			
-		int pivot = vetor[fim];
+		Series pivot = vetor[fim];
 		int part = inicio - 1;
 		for (int i = inicio; i < fim; i++) {
-			if (vetor[i] < pivot)) {
+			if (vetor[i].getName().compareTo(pivot.getName()) < 0) {
 				part++;
 				swap(vetor, part, i);
+				comparacoes++;
 			}
 		}
 		part++;
@@ -44,11 +44,12 @@ public class Quicksort {
 		return (part);
 	}
 		
-	private void swap(int[] vetor, int i, int j) {
+	private void swap(Series[] vetor, int i, int j) {
 		      
-		int temp = vetor[i];
+		Series temp = vetor[i];
 		vetor[i] = vetor[j];
 		vetor[j] = temp;
+		movimentacoes++;
 	}
 
 }

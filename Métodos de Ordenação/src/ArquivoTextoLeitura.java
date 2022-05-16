@@ -2,12 +2,16 @@ import java.io.*;
 
 public class ArquivoTextoLeitura {
 
-	private BufferedReader entrada;
+	private BufferedReader entrada = null;
 	
-	ArquivoTextoLeitura(String nomeArquivo) {	
+	ArquivoTextoLeitura(String nomeArquivo) throws UnsupportedEncodingException {	
 		
 		try {
-			entrada = new BufferedReader(new FileReader(nomeArquivo));
+			try {
+				entrada = new BufferedReader(new InputStreamReader(new FileInputStream(nomeArquivo), "UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
 		catch (FileNotFoundException excecao) {
 			System.out.println("Arquivo nao encontrado");
@@ -17,7 +21,7 @@ public class ArquivoTextoLeitura {
 	public void fecharArquivo() {
 		
 		try {
-			entrada.close();
+			this.entrada.close();
 		}
 		catch (IOException excecao) {
 			System.out.println("Erro no fechamento do arquivo de leitura: " + excecao);	
