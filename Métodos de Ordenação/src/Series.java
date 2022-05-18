@@ -137,25 +137,22 @@ public class Series {
 		return numberDuration;
 	}
 	public void setNumberDuration() {
-		if(duration.contains(" "))
-		{
-			String[] r = duration.split (" ");
-			int i=0;
-			int j=0;
-			while(!(r[i].charAt(j) >= '0' && r[i].charAt(j) <= '9')) {
-				if(j+1 != null) {
-					
-				}
-			}
-			if(r[0].contains("-")) {
-				String[] l = r[0].split ("–");
-				this.numberDuration = Integer.parseInt(l[0]);
-			}else {
-				this.numberDuration = Integer.parseInt(r[0]);
-			}
-		}else {
-			this.numberDuration = Integer.parseInt(duration);
-		}
+		StringBuilder digitos = new StringBuilder();
+        char[] letras  = duration.toCharArray();
+        for (char letra : letras) {
+            if(Character.isDigit(letra)) {
+                digitos.append( letra );
+            }
+            if(digitos.length() == 2) {
+            	break;
+            }
+        }
+        if ( digitos.length() == 0 ) {
+        	numberDuration = 99;
+        }
+        else {
+        	numberDuration = Integer.parseInt(digitos.toString());
+        	}
 	}
 	
 }

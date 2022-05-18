@@ -15,9 +15,14 @@ public class Selection {
 		for (int i = 0; i < (n - 1); i++) {
 	        	int menor = i;
 	         	for (int j = (i + 1); j < n; j++) {
-	            		if (vetor[menor].getName().compareTo(vetor[j].getName()) > 0) {
+	            		if (vetor[menor].getCountry().compareTo(vetor[j].getCountry()) > 0) {
 	               			menor = j;
 	               			comparacoes++;
+	            		}else if(vetor[menor].getCountry().compareTo(vetor[j].getCountry()) == 0) {
+	            			if(vetor[menor].getName().compareTo(vetor[j].getName()) > 0) {
+	            				menor = j;
+		               			comparacoes++;
+	            			}
 	            		}
 	         	}
 	      		Series temp = vetor[i];

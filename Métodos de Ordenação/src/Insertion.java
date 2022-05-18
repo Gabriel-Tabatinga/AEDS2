@@ -17,11 +17,26 @@ public class Insertion {
 			Series tmp = vetor[i];
 	         	int j = i - 1;
 
-	         	while ((j >= 0) && (vetor[j].getName().compareTo(tmp.getName()) > 0)) {
-	            		vetor[j + 1] = vetor[j];
-	            		j--;
+	         	while ((j >= 0) && (vetor[j].getBroadcaster().compareTo(tmp.getBroadcaster()) > 0)) {
+		         		comparacoes++;	
+		         		vetor[j + 1] = vetor[j];
+			            j--;
+			            movimentacoes++;
+		         	
 	         	}
+	         	while ((j >= 0) && (vetor[j].getBroadcaster().compareTo(tmp.getBroadcaster()) == 0) && (vetor[j].getName().compareTo(tmp.getName()) > 0)) {
+	         		
+         			comparacoes++;
+	         		vetor[j + 1] = vetor[j];
+		            j--;
+		            movimentacoes++;
+	         		
+	         		
+	         	
+         	}
+	         	
 	         	vetor[j + 1] = tmp;
+	         	movimentacoes++;
 	      	}
 	}
 }

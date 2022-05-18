@@ -11,7 +11,7 @@ public class Application {
 		
 		ArquivoTextoLeitura bancoDeDados = null;
 		try {
-			bancoDeDados = new ArquivoTextoLeitura("data.txt");
+			bancoDeDados = new ArquivoTextoLeitura/*("/tmp/data.txt");*/("data.txt");
 		} catch (Exception e) {;}
 		input = bancoDeDados.ler();
 		input = bancoDeDados.ler();
@@ -72,8 +72,8 @@ public class Application {
 		}*/
 
 		
-		Bubblesort bubble = new Bubblesort(sort, n);
-		bubble.sort();
+		Insertion insert = new Insertion(sort, n);
+		insert.sort();
 	    
 		  
 		
@@ -86,10 +86,10 @@ public class Application {
 		
 		ArquivoTextoEscrita saidaBolha;
 
-		saidaBolha = new ArquivoTextoEscrita("729636_bolha.txt");
+		saidaBolha = new ArquivoTextoEscrita("729636_insercao.txt");
 
 
-		saidaBolha.escrever("729636" + "\t" + duration + "\t" + bubble.comparacoes + "\t" + bubble.movimentacoes);
+		saidaBolha.escrever("729636" + "\t" + duration + "\t" + insert.comparacoes + "\t" + insert.movimentacoes);
         saidaBolha.fecharArquivo();
 	}
 

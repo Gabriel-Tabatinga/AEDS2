@@ -52,7 +52,7 @@ public class Mergesort {
 
 
 	      	for (i = j = 0, k = esq; (i < n1 && j < n2); k++) {
-	        	if (a1[i].getName().compareTo(a2[j].getName()) <= 0)
+	        	if (a1[i].getLanguage().compareTo(a2[j].getLanguage()) <= 0)
 				{vetor[k] = a1[i++];
 	        	movimentacoes++;}
 			else {

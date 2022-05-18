@@ -43,10 +43,10 @@ public class Heapsort {
 
 	void constroi(Series[] vetor, int tamHeap) {
 
-		for(int i = tamHeap; i > 1 && vetor[i].getName().compareTo(vetor[i/2].getName()) > 0; i /= 2) {
+		for(int i = tamHeap; i > 1 && vetor[i].getNumberSeasons() > vetor[i/2].getNumberSeasons(); i /= 2) {
 	        	troca(vetor, i, i/2);
 	        	comparacoes++;
-	      	}
+	    }
 	}
 
 	void reconstroi(Series[] vetor, int tamHeap) {
@@ -55,7 +55,7 @@ public class Heapsort {
 	      	
 		while(i <= (tamHeap/2)) {
 	        	int filho = getMaiorFilho(vetor, i, tamHeap);
-	        	if(vetor[i].getName().compareTo(vetor[filho].getName()) < 0 ) {
+	        	if(vetor[i].getNumberSeasons() < (vetor[filho].getNumberSeasons())) {
 	            		troca(vetor, i, filho);
 	            		comparacoes++;
 	            		i = filho;
@@ -69,9 +69,9 @@ public class Heapsort {
 
 		int filho;
 
-		if (2*i == tamHeap || vetor[2*i].getName().compareTo(vetor[2*i+1].getName()) > 0 ) {
-	        	filho = 2*i;
-	        	comparacoes++;
+		if (2*i == tamHeap || vetor[2*i].getNumberSeasons() > vetor[2*i+1].getNumberSeasons() ) {
+	        filho = 2*i;
+		    comparacoes++;
 	      	} else {
 	        	filho = 2*i + 1;
 	        	comparacoes++;
