@@ -19,7 +19,7 @@ public class Pilha {
 			return false;
 	}
 	
-	public void empilhar(Caracter novo) {
+	public void empilhar(char novo) {
 		
 		Celula novaCelula;
 		
@@ -28,7 +28,7 @@ public class Pilha {
 		topo = novaCelula;
 	}
 	
-	public Caracter desempilhar() throws Exception {
+	public char desempilhar() throws Exception {
 		
 		Celula desempilhado;
 		
@@ -41,11 +41,12 @@ public class Pilha {
 			throw new Exception("Não foi possível desempilhar: a pilha está vazia!");
 	}
 	
-	public Caracter consultarTopo() throws Exception {
+	public char consultarTopo() throws Exception {
 		
 		if (! pilhaVazia()) {
 			return(topo.getItem());
 		} else
 			throw new Exception("Não foi possível consultar o topo da pilha: a pilha está vazia!");
 	}
+	
 }

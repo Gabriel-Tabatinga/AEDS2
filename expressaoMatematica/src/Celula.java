@@ -1,23 +1,23 @@
 
 public class Celula {
-	private Caracter item;
+	private char item;
 	private Celula proximo;
 	
-	public Celula(Caracter novo) {
+	public Celula(char novo) {
 		item = novo;
 		proximo = null;
 	}
 	
 	public Celula() {
 		
-		item = new Caracter();
+		item = ' ';
 		proximo = null;
 	}
 	
-	public Caracter getItem() {
+	public char getItem() {
 		return item;
 	}
-	public void setItem(Caracter item) {
+	public void setItem(char item) {
 		this.item = item;
 	}
 	
