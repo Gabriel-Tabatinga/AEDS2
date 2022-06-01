@@ -4,15 +4,15 @@ public class ArvoreBinaria {
 	private No raiz;
 	private int comparacoes;
 	private int movimentacoes;
-	private String[] passouPesquisa = new String[30];
-	private int contador;
+	/*private String[] passouPesquisa = new String[30];
+	private int contador;*/
 	
 	public ArvoreBinaria() {
 		
 		raiz = null;
 		comparacoes = 0;
 		movimentacoes = 0;
-		contador = 0;
+		//contador = 0;
 	}
 	
 	public int getMovimentacoes() {
@@ -22,44 +22,44 @@ public class ArvoreBinaria {
 	public int getComparacoes() {
 		return comparacoes;
 	}
-
-	public String[] getPassouPesquisa() {
-		return passouPesquisa;
-	}
 	
-	public void printPassouPesquisa() {
+	/*public void printPassouPesquisa() {
 		//IMPRIMIR MODELO [The 100] - [Game of Thrones] - [Anne] - [12 Monkeys]
-		for(int i=0;i<contador;i++)
-			System.out.print("[" + this.passouPesquisa[i] +"]");
-	}
-
-	public void setPassouPesquisa() {
-		this.passouPesquisa = null;
-	}
+		for(int i=0;i<contador;i++) {
+			System.out.print("[" + this.passouPesquisa[i] +"] ");
+			if(!(i<contador-1)) {
+				System.out.print("- ");
+			}
+		}
+		passouPesquisa = null;
+		this.contador = 0;
+	}*/
 
 	public Series pesquisar(String chave) {
-		this.contador = 0;
 		return pesquisar(this.raiz, chave);
 	}
 	
 	private Series pesquisar(No raizSubarvore, String chave) {
-		
+		String nome;
 		if (raizSubarvore == null)
 			return null;
 		else if (chave.compareTo(raizSubarvore.getItem().getName()) == 0) 
 		{
-			this.passouPesquisa[this.contador] = raizSubarvore.getItem().getName();
-			this.contador++;
+			nome = raizSubarvore.getItem().getName();
+			System.out.print("[" + nome +"] - ");
+			this.comparacoes++;
 			return raizSubarvore.getItem();
 		}
 		else if (chave.compareTo(raizSubarvore.getItem().getName()) > 0) {
-			this.passouPesquisa[this.contador] = raizSubarvore.getItem().getName();
-			this.contador++;
+			nome = raizSubarvore.getItem().getName();
+			System.out.print("[" + nome +"] - ");
+			this.comparacoes++;
 			return pesquisar(raizSubarvore.getDireita(), chave);
 		}
 		else {
-			this.passouPesquisa[this.contador] = raizSubarvore.getItem().getName();
-			this.contador++;
+			nome = raizSubarvore.getItem().getName();
+			System.out.print("[" + nome +"] - ");
+			this.comparacoes++;
 			return pesquisar(raizSubarvore.getEsquerda(), chave);
 		}
 	}
@@ -74,10 +74,14 @@ public class ArvoreBinaria {
 			raizSubarvore = new No(novo);
 		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) == 0)
 			throw new Exception("Não foi possível inserir o item na árvore: chave já inseriada anteriormente!");
-		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) < 0)
+		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) < 0) {
 			raizSubarvore.setEsquerda(inserir(raizSubarvore.getEsquerda(), novo));
-		else
+			this.comparacoes++;
+		}
+		else {
 			raizSubarvore.setDireita(inserir(raizSubarvore.getDireita(), novo));
+			this.comparacoes++;
+		}
 			
 		return raizSubarvore;
 	}

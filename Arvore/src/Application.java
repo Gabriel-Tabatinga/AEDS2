@@ -4,8 +4,6 @@ public class Application {
 		String input;
 		Series serie;
 		Series[] fila = new Series[99];
-		int comparacoes = 0;
-		int movimentacoes = 0;
 		
         int u = 0;
 		
@@ -72,9 +70,9 @@ public class Application {
 		while(!entrada.equals("FIM")) {
 			
 			if(arvore.pesquisar(entrada) == null) {
-				System.out.println("NAO");
+				System.out.print("NAO\n");
 			}else {
-				System.out.println("SIM");
+				System.out.print("SIM\n");
 			}
 			entrada = MyIO.readLine();
 		}
@@ -94,7 +92,7 @@ public class Application {
 		saida = new ArquivoTextoEscrita("729636_arvoreBinaria.txt");
 
 
-		saida.escrever("729636" + "\t" + duration + "\t" + comparacoes + "\t" + movimentacoes);
+		saida.escrever("729636" + "\t" + duration + "\t" + arvore.getComparacoes() + "\t" + arvore.getMovimentacoes());
         saida.fecharArquivo();
 		
 	}
