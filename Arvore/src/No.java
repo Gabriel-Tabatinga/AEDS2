@@ -3,6 +3,7 @@ public class No {
 	private Series item;
 	private No esquerda;
 	private No direita;
+	private int nivel;
 	
 	public No() {
 		
@@ -37,5 +38,13 @@ public class No {
 	}
 	public void setDireita(No direita) {
 		this.direita = direita;
+	}
+	
+	public void setNivel() { //FUNCAO MATH.MAX VAI RETORNAR O MAIOR COMPARANDO ESQUERDA E DIREITA ATE ACHAR NULL
+		this.nivel = 1 + Math.max(getNivel(getEsquerda()), getNivel(getDireita()));
+	}
+
+    public int getNivel(No no) {
+		return (no == null) ? 0 : no.nivel;
 	}
 }

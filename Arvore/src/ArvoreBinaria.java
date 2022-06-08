@@ -64,6 +64,26 @@ public class ArvoreBinaria {
 		}
 	}
 	
+	public void inserirAVL(Series novo) throws Exception {
+		this.raiz = inserirAVL(this.raiz, novo);
+	}
+	
+	private No inserirAVL(No raizSubarvore, Series novo) throws Exception{
+		
+		if (raizSubarvore == null)
+			raizSubarvore = new No(novo);
+		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) == 0)
+			throw new Exception("Não foi possível inserir o item na árvore: chave já inseriada anteriormente!");
+		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) < 0) {
+			raizSubarvore.setEsquerda(inserirAVL(raizSubarvore.getEsquerda(), novo));
+		}
+		else {
+			raizSubarvore.setDireita(inserirAVL(raizSubarvore.getDireita(), novo));
+		}
+			
+		return balancear(raizSubarvore);
+	}
+	
 	public void inserir(Series novo) throws Exception {
 		this.raiz = inserir(this.raiz, novo);
 	}
@@ -76,11 +96,9 @@ public class ArvoreBinaria {
 			throw new Exception("Não foi possível inserir o item na árvore: chave já inseriada anteriormente!");
 		else if (novo.getName().compareTo(raizSubarvore.getItem().getName()) < 0) {
 			raizSubarvore.setEsquerda(inserir(raizSubarvore.getEsquerda(), novo));
-			this.comparacoes++;
 		}
 		else {
 			raizSubarvore.setDireita(inserir(raizSubarvore.getDireita(), novo));
-			this.comparacoes++;
 		}
 			
 		return raizSubarvore;
@@ -120,7 +138,7 @@ public class ArvoreBinaria {
 		
 		return raizSubarvore;
 	}
-	/*
+	
 	public void caminhamentoEmOrdem() {
 		caminhamentoEmOrdem(this.raiz);
 	}
@@ -129,9 +147,71 @@ public class ArvoreBinaria {
 		
 		if (raizSubarvore != null) {
 			caminhamentoEmOrdem(raizSubarvore.getEsquerda());
-			raizSubarvore.getItem().imprimir();
+			raizSubarvore.getItem().printClass();
 			caminhamentoEmOrdem(raizSubarvore.getDireita());
 		}
-	}*/
+	}
+	
+	public int getAltura(){
+	      return getAltura(raiz, 0);
+	   }
+
+
+   public int getAltura(No no, int altura){
+      if(no == null){
+         altura--;
+      } else {
+         int alturaEsq = getAltura(no.getEsquerda(), altura + 1);
+         int alturaDir = getAltura(no.getDireita(), altura + 1);
+         altura = (alturaEsq > alturaDir) ? alturaEsq : alturaDir;
+      }
+      return altura;
+   }
+   
+   public static No balancear(No no) {
+        if (no != null) {
+            int fator = no.getNivel(no.getDireita()) - no.getNivel(no.getEsquerda());
+            if (Math.abs(fator) <= 1) {
+                no.setNivel();
+            } else if (fator == 2) {
+                int fatorFilhoDir = no.getNivel(no.getDireita().getDireita()) - no.getNivel(no.getDireita().getEsquerda());
+                if (fatorFilhoDir == -1) {
+                    no.setDireita(rotacionarDir(no.getDireita()));
+                }
+                no = rotacionarEsq(no);
+            } else if (fator == -2) {
+                int fatorFilhoEsq = no.getNivel(no.getEsquerda().getDireita()) - no.getNivel(no.getEsquerda().getEsquerda());
+                if (fatorFilhoEsq == 1) {
+                    no.setEsquerda(rotacionarEsq(no.getEsquerda()));
+                }
+                no = rotacionarDir(no);
+            } 
+        }
+        return no;
+    }
+
+    public static No rotacionarDir(No no) {
+        No noEsq = no.getEsquerda();
+        No noEsqDir = noEsq.getDireita();
+
+        noEsq.setDireita(no);
+        no.setEsquerda(noEsqDir);
+        no.setNivel(); // Atualizar o nivel do no
+        noEsq.setNivel(); // Atualizar o nivel do noEsq
+
+        return noEsq;
+    }
+
+    public static No rotacionarEsq(No no) {
+        No noDir = no.getDireita();
+        No noDirEsq = noDir.getEsquerda();
+
+        noDir.setEsquerda(no);
+        no.setDireita(noDirEsq);
+
+        no.setNivel(); // Atualizar o nivel do no
+        noDir.setNivel(); // Atualizar o nivel do noDir
+        return noDir;
+    }  
 }
 

@@ -55,7 +55,7 @@ public class Application {
 			for(int j =0;j<u;j++) {
 		    	if(entrada.equals(fila[j].getName()))
 		    		{
-		    			arvore.inserir(fila[j]);
+		    			arvore.inserirAVL(fila[j]); //USAR INSERIR PARA NORMAL E INSERIRAVL PARA INSERIR BALANCEANDO
 		    			j=u;
 		    		}
 		    }
@@ -64,9 +64,11 @@ public class Application {
 		}
 		
 		
+		
+		
 		//ENTRADA DAS SERIES PARA PESQUISA, RETORNANDO SIM, NAO
 		entrada = MyIO.readLine();
-		long startTime = System.nanoTime();
+		long startTime = System.nanoTime(); //INICIALIZANDO TEMPO EXECUCAO PESQUISA
 		while(!entrada.equals("FIM")) {
 			
 			if(arvore.pesquisar(entrada) == null) {
@@ -84,12 +86,10 @@ public class Application {
 		
 		
 		
-		
-		
 		//SAIDA ARQUIVO .TXT
 		ArquivoTextoEscrita saida;
 
-		saida = new ArquivoTextoEscrita("729636_arvoreBinaria.txt");
+		saida = new ArquivoTextoEscrita("729636_arvoreAVL.txt");
 
 
 		saida.escrever("729636" + "\t" + duration + "\t" + arvore.getComparacoes() + "\t" + arvore.getMovimentacoes());
