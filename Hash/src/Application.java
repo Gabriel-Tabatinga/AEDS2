@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 
 public class Application {
 	
@@ -9,13 +8,13 @@ public class Application {
 		Series serie;
 		Series[] fila = new Series[99];
 		
-		JFrame janela = new JFrame("Series");
+		/*JFrame janela = new JFrame("Series");
 		Painel meuPainel = new Painel();
 		  
 		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		janela.add(meuPainel);
 		janela.setSize(600,400);
-		janela.setVisible(true);
+		janela.setVisible(true);*/
 		
         int u = 0;
 		
@@ -56,13 +55,55 @@ public class Application {
 		bancoDeDados.fecharArquivo();
 		
 		
-		Scanner entrada = new Scanner(System.in);
-		while(entrada.hasNext()) {
-			System.out.println(entrada.nextLine());
+		HashAberto hash = new HashAberto(35);
+		
+		String entrada = MyIO.readLine();
+		while(!entrada.equals("FIM")) {
+			
+			for(int j =0;j<u;j++) {
+		    	if(entrada.equals(fila[j].getName()))
+		    		{
+			    			try {
+								hash.inserir(fila[j]);
+							} catch (Exception e) {
+						}
+		    			j=u;
+		    		}
+		    }
+			
+			entrada = MyIO.readLine();
 		}
 		
+		//ENTRADA DAS SERIES PARA PESQUISA, RETORNANDO SIM, NAO
+		entrada = MyIO.readLine();
+		long startTime = System.nanoTime();//INICIALIZANDO TEMPO EXECUCAO PESQUISA
 		
-		entrada.close();
+		while(!entrada.equals("FIM")) {
+			
+			for(int j =0;j<u;j++) {
+				Series pesquisa = new Series();
+				pesquisa = hash.pesquisar(entrada);
+		    	if(pesquisa==null) {
+		    		System.out.println("NAO");
+		    	}else {
+		    		System.out.println(hash.getPosicao() + "SIM");
+		    	}
+		    }
+			entrada = MyIO.readLine();
+		}
+		//FINALIZANDO TEMPO EXECUCAO PESQUISA
+		long endTime = System.nanoTime();
+		long duration = (endTime-startTime);
+		
+		//SAIDA ARQUIVO .TXT
+		ArquivoTextoEscrita saida;
+
+		saida = new ArquivoTextoEscrita("729636_hashRehashing.txt");
+
+
+		saida.escrever("729636" + "\t" + duration + "\t" + hash.getComparacoes());
+        saida.fecharArquivo();
+		
 	}
 
 }
